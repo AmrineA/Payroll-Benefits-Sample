@@ -11,5 +11,7 @@ namespace PayrollBenefits.Models
         public string EmployeeId { get; set; }
 
         public decimal GrossPay { get; set; }
+
+        public int OrganizationId { get; set; }
     }
 }

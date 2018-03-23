@@ -13,6 +13,7 @@ namespace PayrollBenefits.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Dependent>().HasOne<Employee>().WithMany().HasForeignKey(u => u.EmployeeId);
+            modelBuilder.Entity<Employee>().HasOne<Organization>().WithMany().HasForeignKey(u => u.OrganizationId);
         }
 
         public DbSet<Employee> Employees { get; set; }

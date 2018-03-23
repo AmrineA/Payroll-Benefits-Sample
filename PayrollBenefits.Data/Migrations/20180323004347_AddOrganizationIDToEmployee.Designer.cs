@@ -11,9 +11,10 @@ using System;
 namespace PayrollBenefits.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180323004347_AddOrganizationIDToEmployee")]
+    partial class AddOrganizationIDToEmployee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
