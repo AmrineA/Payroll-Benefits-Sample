@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { DependentComponent } from './components/dependent/dependent.component';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -17,6 +19,8 @@ import { BrowserModule } from '@angular/platform-browser';
         AppComponent,
         NavMenuComponent,
         EmployeesComponent,
+        EmployeeComponent,
+        DependentComponent,
         OrganizationComponent,
         HomeComponent
     ],
@@ -31,6 +35,8 @@ import { BrowserModule } from '@angular/platform-browser';
             { path: 'home', component: HomeComponent },
             { path: 'organization', component: OrganizationComponent },
             { path: 'employees', component: EmployeesComponent },
+            { path: 'employees/:id', component: EmployeeComponent },
+            { path: 'employees/:employeeId/dependents/:id', component: DependentComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

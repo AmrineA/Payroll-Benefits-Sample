@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { OrganizationService } from '../../services/organization.service';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Organization } from '../../models/organization.model';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,7 +29,6 @@ export class OrganizationComponent implements OnInit {
     }
 
     save() {
-        alert(1);
         this.organization.name = this.orgForm.value.name;
         this.organization.paychecksPerYear = this.orgForm.value.paychecksPerYear;
         this.organization.employeeBenefitsCost = this.orgForm.value.employeeBenefitsCost;

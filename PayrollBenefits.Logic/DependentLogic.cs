@@ -50,9 +50,12 @@ namespace PayrollBenefits.Logic
 
         public void Update(int organizationId, int employeeId, int id, Dependent dependent)
         {
-            if (Get(organizationId, employeeId, id) != null)
+            var dep = Get(organizationId, employeeId, id);
+            if (dep != null)
             {
-                _dataContext.Dependents.Update(dependent);
+                dep.Age = dependent.Age;
+                dep.FirstName = dependent.FirstName;
+                dep.LastName = dependent.LastName;
                 _dataContext.SaveChanges();
             }
         }
