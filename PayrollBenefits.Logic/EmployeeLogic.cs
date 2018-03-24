@@ -29,6 +29,7 @@ namespace PayrollBenefits.Logic
         {
             employee.OrganizationId = organizationId;
             _dataContext.Employees.Add(employee);
+            _dataContext.SaveChanges();
             return employee;
         }
 
@@ -37,12 +38,14 @@ namespace PayrollBenefits.Logic
             employee.OrganizationId = organizationId;
             employee.Id = id;
             _dataContext.Employees.Update(employee);
+            _dataContext.SaveChanges();
         }
 
         public void Delete(int organizationId, int id)
         {
             var employee = Get(organizationId, id);
             _dataContext.Employees.Remove(employee);
+            _dataContext.SaveChanges();
         }
     }
 }

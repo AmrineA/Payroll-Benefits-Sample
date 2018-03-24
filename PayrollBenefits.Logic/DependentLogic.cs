@@ -43,6 +43,7 @@ namespace PayrollBenefits.Logic
             {
                 dependent.EmployeeId = employeeId;
                 _dataContext.Dependents.Add(dependent);
+                _dataContext.SaveChanges();
                 return dependent;
             }
         }
@@ -52,6 +53,7 @@ namespace PayrollBenefits.Logic
             if (Get(organizationId, employeeId, id) != null)
             {
                 _dataContext.Dependents.Update(dependent);
+                _dataContext.SaveChanges();
             }
         }
 
@@ -59,6 +61,7 @@ namespace PayrollBenefits.Logic
         {
             var dependent = Get(organizationId, employeeId, id);
             _dataContext.Dependents.Remove(dependent);
+            _dataContext.SaveChanges();
         }
     }
 }

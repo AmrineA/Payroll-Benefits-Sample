@@ -34,12 +34,12 @@ namespace PayrollBenefits.Web.Controllers
             return Ok();
         }
         [HttpPost("{employeeId}/[controller]")]
-        public IActionResult Create(int employeeId, Dependent dependent)
+        public IActionResult Create(int employeeId, [FromBody]Dependent dependent)
         {
             return Ok(_dependentLogic.Create(this.OrganizationId, employeeId, dependent));
         }
         [HttpPut("{employeeId}/[controller]/{id}")]
-        public IActionResult Update(int employeeId, int id, Dependent dependent)
+        public IActionResult Update(int employeeId, int id, [FromBody]Dependent dependent)
         {
             _dependentLogic.Update(this.OrganizationId, employeeId, id, dependent);
             return Ok();

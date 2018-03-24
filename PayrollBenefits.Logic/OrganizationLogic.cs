@@ -26,22 +26,11 @@ namespace PayrollBenefits.Logic
             return _dataContext.Organizations.FirstOrDefault(o => o.Id == id);
         }
 
-        public Organization Create(Organization organization)
-        {
-            _dataContext.Organizations.Add(organization);
-            return organization;
-        }
-
         public void Update(int id, Organization organization)
         {
             organization.Id = id;
             _dataContext.Organizations.Update(organization);
-        }
-
-        public void Delete(int id)
-        {
-            var organization = Get(id);
-            _dataContext.Organizations.Remove(organization);
+            _dataContext.SaveChanges();
         }
     }
 }

@@ -1,0 +1,31 @@
+<h1>Organization</h1>
+
+<p>Use this screen to change settings for the organization.</p>
+
+<form [formGroup]="orgForm" *ngIf="orgForm"  class="form-horizontal">
+    <div class="form-group">
+        <label for="name" class="col-sm-3 control-label">Name</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="paychecksPerYear" class="col-sm-3 control-label">Paychecks Per Year</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="paychecksPerYear" formControlName="paychecksPerYear" placeholder="Paychecks Per Year">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="employeeBenefitsCost" class="col-sm-3 control-label">Employee Benefits Cost</label>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" name="employeeBenefitsCost" formControlName="employeeBenefitsCost" placeholder="Employee Benefits Cost">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dependentBenefitsCost" class="col-sm-3 control-label">Dependent Benefits Cost</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="dependentBenefitsCost" formControlName="dependentBenefitsCost" placeholder="Dependent Benefits Cost">
+        </div>
+    </div>
+    <input type="button" value="Save" class="btn btn-primary" (click)="save()" [disabled]="!orgForm.valid" />
+</form>
