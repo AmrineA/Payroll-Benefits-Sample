@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Employee } from '../models/employee.model';
 import { Dependent } from '../models/dependent.model';
+import { PaySummaryItem } from '../models/paySummary.model';
 
 @Injectable()
 export class EmployeeService {
@@ -15,6 +16,10 @@ export class EmployeeService {
 
     get(id: number): Observable<Employee> {
         return this.client.get<Employee>(`api/Employees/${id}`);
+    }
+
+    getPaySummary(id: number): Observable<PaySummaryItem[]> {
+        return this.client.get<PaySummaryItem[]>(`api/Employees/${id}/PaySummary`);
     }
 
     delete(id: number) {

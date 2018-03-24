@@ -24,6 +24,7 @@
     <None Remove="ClientApp\app\models\dependent.model.ts" />
     <None Remove="ClientApp\app\models\employee.model.ts" />
     <None Remove="ClientApp\app\models\organization.model.ts" />
+    <None Remove="ClientApp\app\models\paySummary.model.ts" />
     <None Remove="ClientApp\app\services\employee.service.ts" />
     <None Remove="ClientApp\app\services\organization.service.ts" />
   </ItemGroup>
@@ -36,6 +37,7 @@
     <TypeScriptCompile Include="ClientApp\app\models\dependent.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\employee.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\organization.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\paySummary.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\employee.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\organization.service.ts" />
   </ItemGroup>

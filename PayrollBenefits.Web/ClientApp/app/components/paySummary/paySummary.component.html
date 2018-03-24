@@ -1,0 +1,24 @@
+<h1>Pay Summary - {{employee?.firstName}} {{employee?.lastName}}</h1>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class='table' *ngIf="paySummary">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Subtotal</th>
+                    <th>Discount</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of paySummary">
+                    <td>{{ item.item }}</td>
+                    <td>{{ item.subtotal | currency }}</td>
+                    <td>{{ item.discount | currency }}</td>
+                    <td>{{ item.total | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { DependentComponent } from './components/dependent/dependent.component';
+import { PaySummaryComponent } from './components/paySummary/paySummary.component';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -20,6 +21,7 @@ import { DependentComponent } from './components/dependent/dependent.component';
         NavMenuComponent,
         EmployeesComponent,
         EmployeeComponent,
+        PaySummaryComponent,
         DependentComponent,
         OrganizationComponent,
         HomeComponent
@@ -36,6 +38,7 @@ import { DependentComponent } from './components/dependent/dependent.component';
             { path: 'organization', component: OrganizationComponent },
             { path: 'employees', component: EmployeesComponent },
             { path: 'employees/:id', component: EmployeeComponent },
+            { path: 'employees/:id/paysummary', component: PaySummaryComponent },
             { path: 'employees/:employeeId/dependents/:id', component: DependentComponent },
             { path: '**', redirectTo: 'home' }
         ])

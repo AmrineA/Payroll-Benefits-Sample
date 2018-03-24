@@ -30,6 +30,8 @@ namespace PayrollBenefits.Web
             services.AddTransient<OrganizationLogic>();
             services.AddTransient<EmployeeLogic>();
             services.AddTransient<DependentLogic>();
+            services.AddTransient<PaySummaryLogic>();
+            services.AddTransient<DiscountLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -15,7 +15,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let employee of employees">
-                    <td><a [routerLink]="['/employees', employee.id]" class="btn btn-xs btn-primary">Edit</a></td>
+                    <td>
+                        <a [routerLink]="['/employees', employee.id]" class="btn btn-xs btn-primary">Edit</a>
+                        <a [routerLink]="['/employees', employee.id, 'paysummary']" class="btn btn-xs btn-primary">Pay Summary</a>
+                    </td>
                     <td>{{ employee.id }}</td>
                     <td>{{ employee.firstName }}</td>
                     <td>{{ employee.lastName }}</td>

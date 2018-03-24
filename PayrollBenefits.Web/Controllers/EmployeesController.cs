@@ -12,9 +12,11 @@ namespace PayrollBenefits.Web.Controllers
     public class EmployeesController : BaseController
     {
         private readonly EmployeeLogic _employeeLogic;
-        public EmployeesController(EmployeeLogic employeeLogic)
+        private readonly PaySummaryLogic _paySummaryLogic;
+        public EmployeesController(EmployeeLogic employeeLogic, PaySummaryLogic paySummaryLogic)
         {
             _employeeLogic = employeeLogic;
+            _paySummaryLogic = paySummaryLogic;
         }
 
         [HttpGet]
@@ -26,6 +28,11 @@ namespace PayrollBenefits.Web.Controllers
         public IActionResult Get(int id)
         {
             return Ok(_employeeLogic.Get(this.OrganizationId, id));
+        }
+        [HttpGet("{id}/PaySummary")]
+        public IActionResult GetPaySummary(int id)
+        {
+            return Ok(_paySummaryLogic.GetPaySummary(this.OrganizationId, id));
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
