@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PayrollBenefits.Logic;
 using PayrollBenefits.Logic.Extensions;
 
 namespace PayrollBenefits.Web
@@ -26,6 +27,9 @@ namespace PayrollBenefits.Web
             services.AddMvc();
 
             services.AddDbContext(Configuration);
+            services.AddTransient<OrganizationLogic>();
+            services.AddTransient<EmployeeLogic>();
+            services.AddTransient<DependentLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

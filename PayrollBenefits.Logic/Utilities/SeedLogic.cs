@@ -27,8 +27,47 @@ namespace PayrollBenefits.Logic.Utilities
                         Name = "Sample Organization",
                         PaychecksPerYear = 26
                     });
+                    await context.SaveChangesAsync();
                 }
-                await context.SaveChangesAsync();
+
+                if (!context.Employees.Any())
+                {
+                    await context.Employees.AddAsync(new Employee()
+                    {
+                        Age = 30,
+                        FirstName = "John",
+                        LastName = "Smith",
+                        OrganizationId = 1,
+                        GrossPay = 2000
+                    });
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.Dependents.Any())
+                {
+                    var e = context.Employees.FirstOrDefault();
+
+                    await context.Dependents.AddRangeAsync(new Dependent()
+                    {
+                        Age = 28,
+                        FirstName = "Mary",
+                        LastName = "Smith",
+                        EmployeeId = e.Id
+                    }, new Dependent()
+                    {
+                        Age = 13,
+                        FirstName = "Amy",
+                        LastName = "Smith",
+                        EmployeeId = e.Id
+                    }, new Dependent()
+                    {
+                        Age = 9,
+                        FirstName = "Tyler",
+                        LastName = "Smith",
+                        EmployeeId = e.Id
+                    });
+                    await context.SaveChangesAsync();
+                }
             }
         }
     }
