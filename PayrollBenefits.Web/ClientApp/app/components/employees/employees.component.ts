@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'employees',
@@ -10,7 +11,7 @@ import { Employee } from '../../models/employee.model';
 export class EmployeesComponent implements OnInit {
     employees: Employee[];
 
-    constructor(private employeeService: EmployeeService) {
+    constructor(private employeeService: EmployeeService, private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -20,6 +21,8 @@ export class EmployeesComponent implements OnInit {
     delete(id: number) {
         if (confirm(`Are you sure you want to delete employee with ID ${id}?`))
             this.employeeService.delete(id).subscribe(() => {
+                this.toastr.success('Success', 'Employee deleted successfully');
+
                 this.loadEmployees();
             });
     }

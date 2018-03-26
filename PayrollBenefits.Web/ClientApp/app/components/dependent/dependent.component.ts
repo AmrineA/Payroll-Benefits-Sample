@@ -4,6 +4,7 @@ import { Employee } from '../../models/employee.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Dependent } from '../../models/dependent.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'dependent',
@@ -17,7 +18,7 @@ export class DependentComponent implements OnInit {
     depForm: FormGroup;
 
     constructor(private employeeService: EmployeeService, private route: ActivatedRoute,
-        private fb: FormBuilder, private router: Router) {
+        private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -49,9 +50,15 @@ export class DependentComponent implements OnInit {
         this.dependent.lastName = this.depForm.value.lastName;
         this.dependent.age = this.depForm.value.age;
         if (this.id == 0) {
-            this.employeeService.createDependent(this.employeeId, this.dependent).subscribe(() => this.router.navigate(['/employees', this.employeeId]));
+            this.employeeService.createDependent(this.employeeId, this.dependent).subscribe(() => {
+                this.toastr.success('Success', 'Dependent created successfully');
+                this.router.navigate(['/employees', this.employeeId]);
+            });
         } else {
-            this.employeeService.updateDependent(this.employeeId, this.id, this.dependent).subscribe(() => this.router.navigate(['/employees', this.employeeId]));
+            this.employeeService.updateDependent(this.employeeId, this.id, this.dependent).subscribe(() => {
+                this.toastr.success('Success', 'Dependent saved successfully');
+                this.router.navigate(['/employees', this.employeeId]);
+            });
         }
     }
 }

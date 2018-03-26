@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +14,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { DependentComponent } from './components/dependent/dependent.component';
 import { PaySummaryComponent } from './components/paySummary/paySummary.component';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -41,7 +44,9 @@ import { PaySummaryComponent } from './components/paySummary/paySummary.componen
             { path: 'employees/:id/paysummary', component: PaySummaryComponent },
             { path: 'employees/:employeeId/dependents/:id', component: DependentComponent },
             { path: '**', redirectTo: 'home' }
-        ])
+        ]),
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [
         HttpClient,

@@ -4,6 +4,7 @@ import { Employee } from '../../models/employee.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Dependent } from '../../models/dependent.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'employee',
@@ -17,7 +18,7 @@ export class EmployeeComponent implements OnInit {
     empForm: FormGroup;
 
     constructor(private employeeService: EmployeeService, private route: ActivatedRoute,
-        private fb: FormBuilder, private router: Router) {
+        private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -52,15 +53,24 @@ export class EmployeeComponent implements OnInit {
         this.employee.age = this.empForm.value.age;
         this.employee.grossPay = this.empForm.value.grossPay;
         if (this.id == 0) {
-            this.employeeService.create(this.employee).subscribe(() => this.router.navigate(['/employees']));
+            this.employeeService.create(this.employee).subscribe(() => {
+                this.toastr.success('Success', 'Employee created successfully');
+                this.router.navigate(['/employees']);
+            });
         } else {
-            this.employeeService.update(this.id, this.employee).subscribe(() => this.router.navigate(['/employees']));
+            this.employeeService.update(this.id, this.employee).subscribe(() => {
+                this.toastr.success('Success', 'Employee saved successfully');
+                this.router.navigate(['/employees']);
+            });
         }
     }
 
     deleteDependent(dependentId: number) {
         if (confirm(`Are you sure you want to delete dependent with ID ${dependentId}?`))
-            this.employeeService.deleteDependent(this.id, dependentId).subscribe(() => this.loadDependents());
+            this.employeeService.deleteDependent(this.id, dependentId).subscribe(() => {
+                this.toastr.success('Success', 'Dependent deleted successfully');
+                this.loadDependents();
+            });
     }
 
     loadDependents() {

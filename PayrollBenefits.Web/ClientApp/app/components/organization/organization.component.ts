@@ -3,6 +3,7 @@ import { OrganizationService } from '../../services/organization.service';
 import { Organization } from '../../models/organization.model';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'organization',
@@ -13,7 +14,7 @@ export class OrganizationComponent implements OnInit {
     orgForm: FormGroup;
     organization: Organization;
     constructor(private orgService: OrganizationService, private fb: FormBuilder,
-    private router: Router) {
+        private router: Router, private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -33,6 +34,9 @@ export class OrganizationComponent implements OnInit {
         this.organization.paychecksPerYear = this.orgForm.value.paychecksPerYear;
         this.organization.employeeBenefitsCost = this.orgForm.value.employeeBenefitsCost;
         this.organization.dependentBenefitsCost = this.orgForm.value.dependentBenefitsCost;
-        this.orgService.update(this.organization).subscribe(() => this.router.navigate(['/home']));
+        this.orgService.update(this.organization).subscribe(() => {
+            this.toastr.success('Success', 'Organization saved successfully');
+            this.router.navigate(['/home']);
+        });
     }
 }
