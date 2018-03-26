@@ -18,6 +18,7 @@
                     <td>
                         <a [routerLink]="['/employees', employee.id]" class="btn btn-xs btn-primary">Edit</a>
                         <a [routerLink]="['/employees', employee.id, 'paysummary']" class="btn btn-xs btn-primary">Pay Summary</a>
+                        <a (click)="delete(employee.id)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
                     </td>
                     <td>{{ employee.id }}</td>
                     <td>{{ employee.firstName }}</td>

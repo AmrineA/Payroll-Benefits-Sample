@@ -14,6 +14,17 @@ export class EmployeesComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loadEmployees();
+    }
+
+    delete(id: number) {
+        if (confirm(`Are you sure you want to delete employee with ID ${id}?`))
+            this.employeeService.delete(id).subscribe(() => {
+                this.loadEmployees();
+            });
+    }
+
+    loadEmployees() {
         this.employeeService.getAll().subscribe(e => this.employees = e);
     }
 }

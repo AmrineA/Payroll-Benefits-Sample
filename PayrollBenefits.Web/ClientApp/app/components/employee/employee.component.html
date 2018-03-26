@@ -48,7 +48,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let dependent of dependents">
-                    <td><a [routerLink]="['/employees', id, 'dependents', dependent.id]" class="btn btn-xs btn-primary">Edit</a></td>
+                    <td>
+                        <a [routerLink]="['/employees', id, 'dependents', dependent.id]" class="btn btn-xs btn-primary">Edit</a>
+                        <a (click)="deleteDependent(dependent.id)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>
+                    </td>
                     <td>{{ dependent.id }}</td>
                     <td>{{ dependent.firstName }}</td>
                     <td>{{ dependent.lastName }}</td>

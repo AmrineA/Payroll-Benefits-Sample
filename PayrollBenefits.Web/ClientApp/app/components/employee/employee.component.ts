@@ -33,7 +33,7 @@ export class EmployeeComponent implements OnInit {
                         'grossPay': [this.employee.grossPay, Validators.required]
                     });
                 });
-                this.employeeService.getAllDependents(this.id).subscribe(d => this.dependents = d);
+                this.loadDependents();
             } else {
                 this.employee = new Employee();
                 this.empForm = this.fb.group({
@@ -56,5 +56,14 @@ export class EmployeeComponent implements OnInit {
         } else {
             this.employeeService.update(this.id, this.employee).subscribe(() => this.router.navigate(['/employees']));
         }
+    }
+
+    deleteDependent(dependentId: number) {
+        if (confirm(`Are you sure you want to delete dependent with ID ${dependentId}?`))
+            this.employeeService.deleteDependent(this.id, dependentId).subscribe(() => this.loadDependents());
+    }
+
+    loadDependents() {
+        this.employeeService.getAllDependents(this.id).subscribe(d => this.dependents = d);
     }
 }
