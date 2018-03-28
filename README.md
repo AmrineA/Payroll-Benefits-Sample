@@ -2,13 +2,13 @@
 An application demonstrating a simple payroll and benefits system
 
 This application uses the following technologies and frameworks:
-ASP.NET/.NET Core 2.0
-Entity Framework Core
-Angular 5
-SQL Server 
-C#
-Bootstrap
-TypeScript
+-ASP.NET/.NET Core 2.0
+-Entity Framework Core
+-Angular 5
+-SQL Server 
+-C#
+-Bootstrap
+-TypeScript
 
 Steps to run the application:
 1. Ensure you have SQL Server LocalDB running, or modify the connection string in the appsettings.json file to point to an instance of SQL Server.
